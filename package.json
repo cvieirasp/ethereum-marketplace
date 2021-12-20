@@ -1,9 +1,9 @@
 {
-  "name": "eth-marketplace",
-  "version": "0.1.0",
+  "name": "etherium-marketplace",
+  "version": "1.0.0",
   "description": "An Ethereum Marketplace",
-  "author": "gregory@dappuniversity.com",
-  "homepage": "https://rene78.github.io/ethereum-marketplace/",
+  "author": "cvieirasp@gmail.com",
+  "homepage": "https://github.com/cvieirasp/ethereum-marketplace",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "1.7.0",
