@@ -95,11 +95,11 @@ class App extends Component {
     this.setState({ loading: true });
     this.state.marketplace.methods.createProduct(name, price, forSale)
       .send({ from: this.state.account })
-      .once('confirmation', (confirmationNumber, receipt) => {
+      .once('confirmation', async (confirmationNumber, receipt) => {
         console.log(`Confirmation Number: ${confirmationNumber}`);
         console.log(receipt);
         this.setState({ loading: false });
-        this.loadProducts();
+        await this.loadProducts();
       }).once('error', (error, receipt) => {
         console.log(error);
         this.setState({ loading: false });
@@ -116,11 +116,11 @@ class App extends Component {
     this.setState({ loading: true });
     this.state.marketplace.methods.purchaseProduct(id)
       .send({ from: this.state.account, value: price })
-      .once('confirmation', (confirmationNumber, receipt) => {
+      .once('confirmation', async (confirmationNumber, receipt) => {
         console.log(`Confirmation Number: ${confirmationNumber}`);
         console.log(receipt);
         this.setState({ loading: false });
-        this.loadProducts();
+        await this.loadProducts();
       }).once('error', (error, receipt) => {
         console.log(error);
         this.setState({ loading: false });
@@ -176,6 +176,17 @@ class App extends Component {
               />
             </Routes>
           </BrowserRouter>
+          </div>
+          <div className="row">
+            <footer style={{margin: '10px auto'}}>
+              <h2>Integrantes do Grupo</h2>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Carlos Henrique Vieira Figueiredo</li>
+                <li className="list-group-item">Emmanuel Rodrigues Barbosa da Silva</li>
+                <li className="list-group-item">Hugo Teodoro Calandrini De Azevedo Melo</li>
+                <li className="list-group-item">Jefferson Silva dos Santos</li>
+              </ul>
+            </footer>
           </div>
         </div>
       </>

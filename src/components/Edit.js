@@ -11,7 +11,7 @@ function Edit(props) {
     price: 0,
     forSale: false,
     purchased: false,
-    loading: true
+    loading: false
   });
 
   useEffect(() => {
@@ -65,12 +65,12 @@ function Edit(props) {
       const convertedPrice = window.web3.utils.toWei(state.price.toString(), 'Ether');
       await props.marketplace.methods.updateProduct(state.id, convertedPrice, state.forSale)
         .send({ from: props.account })
-        .once('confirmation', function(confirmationNumber, receipt){
+        .once('confirmation', async function(confirmationNumber, receipt){
           console.log(`Confirmation Number: ${confirmationNumber}`);
           console.log(receipt);
           if (props.loadProducts)
-            props.loadProducts();
-            setState({...state, loading: false });
+            await props.loadProducts();
+          setState({...state, loading: false });
           navigate("/");
         })
         .on('error', function(error, receipt) {
